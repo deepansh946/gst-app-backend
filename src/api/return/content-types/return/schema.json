@@ -1,0 +1,56 @@
+{
+  "kind": "collectionType",
+  "collectionName": "returns",
+  "info": {
+    "singularName": "return",
+    "pluralName": "returns",
+    "displayName": "returns",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "gst_returns"
+    },
+    "type": {
+      "type": "string"
+    },
+    "year": {
+      "type": "string"
+    },
+    "filingDate": {
+      "type": "date"
+    },
+    "lastDate": {
+      "type": "date"
+    },
+    "processedAt": {
+      "type": "date"
+    },
+    "note": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "RECEIVED",
+        "PROCESSING",
+        "ERROR",
+        "READY",
+        "FILED"
+      ]
+    },
+    "processed_by": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "processed_returns"
+    }
+  }
+}

@@ -65,37 +65,19 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "phone": {
+    "fullName": {
       "type": "string"
     },
-    "gstIn": {
-      "type": "string"
-    },
-    "aadhar": {
-      "type": "string"
-    },
-    "panNumber": {
+    "gstNumber": {
       "type": "string"
     },
     "businessName": {
       "type": "string"
     },
-    "address": {
+    "businessAddress": {
       "type": "string"
     },
-    "city": {
-      "type": "string"
-    },
-    "state": {
-      "type": "string"
-    },
-    "pincode": {
-      "type": "string"
-    },
-    "accountNumber": {
-      "type": "string"
-    },
-    "ifscCode": {
+    "businessCategory": {
       "type": "string"
     },
     "paymentMethod": {
@@ -105,6 +87,33 @@
         "QUARTERLY",
         "ANNUALLY"
       ]
+    },
+    "phone": {
+      "type": "string"
+    },
+    "businessEntity": {
+      "type": "string"
+    },
+    "numberOfDirectors": {
+      "type": "integer"
+    },
+    "registrationDate": {
+      "type": "date"
+    },
+    "kycData": {
+      "type": "json"
+    },
+    "gst_returns": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::return.return",
+      "mappedBy": "user"
+    },
+    "processed_returns": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::return.return",
+      "mappedBy": "processed_by"
     }
   }
 }

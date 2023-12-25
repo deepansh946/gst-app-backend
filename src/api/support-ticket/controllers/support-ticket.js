@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * support-ticket controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require("@strapi/strapi").factories;
 
-module.exports = createCoreController('api::support-ticket.support-ticket');
+module.exports = createCoreController("api::support-ticket.support-ticket");

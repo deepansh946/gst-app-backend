@@ -27,6 +27,7 @@
       "type": "enumeration",
       "enum": [
         "PENDING",
+        "UNDER_PROCESS",
         "RESOLVED"
       ]
     }
