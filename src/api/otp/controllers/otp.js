@@ -24,6 +24,10 @@ module.exports = createCoreController("api::otp.otp", ({ strapi }) => ({
         where: { phone },
       });
 
+    if (!user) {
+      ctx.throw(400, "No user is associated with this phone number.");
+    }
+
     const sns = new AWS.SNS({
       accessKeyId: process.env.AWS_ACCESS_KEY,
       secretAccessKey: process.env.AWS_SECRET_KEY,
