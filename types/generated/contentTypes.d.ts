@@ -362,156 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiNotificationNotification extends Schema.CollectionType {
-  collectionName: 'notifications';
-  info: {
-    singularName: 'notification';
-    pluralName: 'notifications';
-    displayName: 'Notification';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    content: Attribute.Text;
-    users: Attribute.Relation<
-      'api::notification.notification',
-      'oneToMany',
-      'plugin::users-permissions.user'
-    >;
-    type: Attribute.Enumeration<['PAYMENT', 'DOCUMENT']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::notification.notification',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::notification.notification',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiOtpOtp extends Schema.CollectionType {
-  collectionName: 'otps';
-  info: {
-    singularName: 'otp';
-    pluralName: 'otps';
-    displayName: 'otp';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    users_permissions_user: Attribute.Relation<
-      'api::otp.otp',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    code: Attribute.String;
-    expiresIn: Attribute.DateTime;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::otp.otp', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::otp.otp', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiReturnReturn extends Schema.CollectionType {
-  collectionName: 'returns';
-  info: {
-    singularName: 'return';
-    pluralName: 'returns';
-    displayName: 'returns';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'api::return.return',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    type: Attribute.String;
-    year: Attribute.String;
-    filingDate: Attribute.Date;
-    lastDate: Attribute.Date;
-    processedAt: Attribute.Date;
-    note: Attribute.String;
-    status: Attribute.Enumeration<
-      ['RECEIVED', 'PROCESSING', 'ERROR', 'READY', 'FILED']
-    >;
-    processed_by: Attribute.Relation<
-      'api::return.return',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::return.return',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::return.return',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSupportTicketSupportTicket extends Schema.CollectionType {
-  collectionName: 'support_tickets';
-  info: {
-    singularName: 'support-ticket';
-    pluralName: 'support-tickets';
-    displayName: 'Support Ticket';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    query: Attribute.Text;
-    user: Attribute.Relation<
-      'api::support-ticket.support-ticket',
-      'oneToOne',
-      'admin::user'
-    >;
-    answer: Attribute.Text;
-    status: Attribute.Enumeration<['PENDING', 'UNDER_PROCESS', 'RESOLVED']>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::support-ticket.support-ticket',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::support-ticket.support-ticket',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -780,7 +630,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     displayName: 'User';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
     username: Attribute.String &
@@ -832,6 +682,7 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'plugin::users-permissions.user',
       'oneToOne',
@@ -840,6 +691,155 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'plugin::users-permissions.user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNotificationNotification extends Schema.CollectionType {
+  collectionName: 'notifications';
+  info: {
+    singularName: 'notification';
+    pluralName: 'notifications';
+    displayName: 'Notification';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    content: Attribute.Text;
+    users: Attribute.Relation<
+      'api::notification.notification',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    type: Attribute.Enumeration<['PAYMENT', 'DOCUMENT']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::notification.notification',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOtpOtp extends Schema.CollectionType {
+  collectionName: 'otps';
+  info: {
+    singularName: 'otp';
+    pluralName: 'otps';
+    displayName: 'otp';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::otp.otp',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    code: Attribute.String;
+    expiresIn: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::otp.otp', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::otp.otp', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReturnReturn extends Schema.CollectionType {
+  collectionName: 'returns';
+  info: {
+    singularName: 'return';
+    pluralName: 'returns';
+    displayName: 'returns';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::return.return',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Attribute.String;
+    year: Attribute.String;
+    filingDate: Attribute.Date;
+    lastDate: Attribute.Date;
+    processedAt: Attribute.Date;
+    note: Attribute.String;
+    status: Attribute.Enumeration<
+      ['RECEIVED', 'PROCESSING', 'ERROR', 'READY', 'FILED']
+    >;
+    processedBy: Attribute.Relation<
+      'api::return.return',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::return.return',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::return.return',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupportTicketSupportTicket extends Schema.CollectionType {
+  collectionName: 'support_tickets';
+  info: {
+    singularName: 'support-ticket';
+    pluralName: 'support-tickets';
+    displayName: 'Support Ticket';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    query: Attribute.Text;
+    user: Attribute.Relation<
+      'api::support-ticket.support-ticket',
+      'oneToOne',
+      'admin::user'
+    >;
+    answer: Attribute.Text;
+    status: Attribute.Enumeration<['PENDING', 'UNDER_PROCESS', 'RESOLVED']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::support-ticket.support-ticket',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::support-ticket.support-ticket',
       'oneToOne',
       'admin::user'
     > &
@@ -857,16 +857,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::notification.notification': ApiNotificationNotification;
-      'api::otp.otp': ApiOtpOtp;
-      'api::return.return': ApiReturnReturn;
-      'api::support-ticket.support-ticket': ApiSupportTicketSupportTicket;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::notification.notification': ApiNotificationNotification;
+      'api::otp.otp': ApiOtpOtp;
+      'api::return.return': ApiReturnReturn;
+      'api::support-ticket.support-ticket': ApiSupportTicketSupportTicket;
     }
   }
 }

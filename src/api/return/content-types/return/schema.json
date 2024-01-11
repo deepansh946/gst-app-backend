@@ -8,7 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
@@ -46,7 +46,7 @@
         "FILED"
       ]
     },
-    "processed_by": {
+    "processedBy": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",

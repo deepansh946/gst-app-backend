@@ -4,14 +4,15 @@
   "info": {
     "singularName": "otp",
     "pluralName": "otps",
-    "displayName": "otp"
+    "displayName": "otp",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "users_permissions_user": {
+    "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user"

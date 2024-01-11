@@ -9,7 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false
+    "draftAndPublish": true
   },
   "attributes": {
     "username": {
@@ -82,11 +82,7 @@
     },
     "paymentMethod": {
       "type": "enumeration",
-      "enum": [
-        "MONTHLY",
-        "QUARTERLY",
-        "ANNUALLY"
-      ]
+      "enum": ["MONTHLY", "QUARTERLY", "ANNUALLY"]
     },
     "phone": {
       "type": "string"
@@ -113,7 +109,7 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::return.return",
-      "mappedBy": "processed_by"
+      "mappedBy": "processedBy"
     }
   }
 }
