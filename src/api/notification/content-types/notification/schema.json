@@ -22,10 +22,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "PAYMENT",
-        "DOCUMENT"
-      ]
+      "enum": ["PAYMENT", "DOCUMENT"]
     }
   }
 }
