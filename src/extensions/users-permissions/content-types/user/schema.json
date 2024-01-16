@@ -68,48 +68,26 @@
     "fullName": {
       "type": "string"
     },
-    "gstNumber": {
-      "type": "string"
-    },
-    "businessName": {
-      "type": "string"
-    },
-    "businessAddress": {
-      "type": "string"
-    },
-    "businessCategory": {
-      "type": "string"
-    },
-    "paymentMethod": {
-      "type": "enumeration",
-      "enum": ["MONTHLY", "QUARTERLY", "ANNUALLY"]
-    },
     "phone": {
       "type": "string"
     },
-    "businessEntity": {
-      "type": "string"
-    },
-    "numberOfDirectors": {
-      "type": "integer"
-    },
-    "registrationDate": {
-      "type": "date"
-    },
-    "kycData": {
-      "type": "json"
-    },
-    "gst_returns": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::return.return",
-      "mappedBy": "user"
-    },
-    "processed_returns": {
+    "processedReturns": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::return.return",
       "mappedBy": "processedBy"
+    },
+    "owningCompanies": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "owners"
+    },
+    "managingCompanies": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "managers"
     }
   }
 }

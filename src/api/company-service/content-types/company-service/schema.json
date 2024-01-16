@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "company_services",
+  "info": {
+    "singularName": "company-service",
+    "pluralName": "company-services",
+    "displayName": "Company Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "price": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

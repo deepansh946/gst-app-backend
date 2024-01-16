@@ -4,7 +4,7 @@
   "info": {
     "singularName": "return",
     "pluralName": "returns",
-    "displayName": "returns",
+    "displayName": "GST Returns",
     "description": ""
   },
   "options": {
@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "user": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "gst_returns"
-    },
     "type": {
       "type": "string"
     },
@@ -46,11 +40,17 @@
         "FILED"
       ]
     },
+    "company": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::company.company",
+      "inversedBy": "gstReturns"
+    },
     "processedBy": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "processed_returns"
+      "inversedBy": "processedReturns"
     }
   }
 }

@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "companies",
+  "info": {
+    "singularName": "company",
+    "pluralName": "companies",
+    "displayName": "Companies",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "gstIn": {
+      "type": "string"
+    },
+    "businessAddress": {
+      "type": "string"
+    },
+    "returnFilingType": {
+      "type": "enumeration",
+      "enum": [
+        "MONTHLY",
+        "QUARTERLY",
+        "CMP-08"
+      ]
+    },
+    "gstReturns": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::return.return",
+      "mappedBy": "company"
+    },
+    "gstUserId": {
+      "type": "string"
+    },
+    "verified": {
+      "type": "boolean"
+    },
+    "powerOfAttorneySigned": {
+      "type": "boolean"
+    },
+    "gstPassword": {
+      "type": "string"
+    },
+    "owners": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "owningCompanies"
+    },
+    "managers": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "managingCompanies"
+    }
+  }
+}

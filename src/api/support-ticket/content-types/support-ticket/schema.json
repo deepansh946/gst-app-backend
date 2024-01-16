@@ -4,7 +4,7 @@
   "info": {
     "singularName": "support-ticket",
     "pluralName": "support-tickets",
-    "displayName": "Support Ticket",
+    "displayName": "Service Requests",
     "description": ""
   },
   "options": {
