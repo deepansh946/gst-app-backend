@@ -22,7 +22,15 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": ["PAYMENT", "DOCUMENT"]
+      "enum": [
+        "PAYMENT",
+        "DOCUMENT"
+      ]
+    },
+    "viewed": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
