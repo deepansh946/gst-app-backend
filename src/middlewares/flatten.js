@@ -37,7 +37,7 @@ function flatten(obj) {
 
 async function respond(ctx, next) {
   await next();
-  if (!ctx.url.startsWith("/api")) {
+  if (ctx.url.startsWith("/api/auth") || ctx.url.startsWith("/api/users")) {
     return;
   }
   ctx.response.body = flatten(ctx.response.body.data);
