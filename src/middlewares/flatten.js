@@ -36,11 +36,13 @@ function flatten(obj) {
 }
 
 async function respond(ctx, next) {
+  console.log(ctx.url);
   await next();
   if (ctx.url.startsWith("/api/auth") || ctx.url.startsWith("/api/users")) {
     return;
+  } else if (ctx.url.startsWith("/api")) {
+    ctx.response.body = flatten(ctx.response.body.data);
   }
-  ctx.response.body = flatten(ctx.response.body.data);
 }
 
 module.exports = () => respond;
